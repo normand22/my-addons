@@ -1,0 +1,70 @@
+<odoo>
+    <!-- vista formulario -->
+    <record id="view_hotel_lead_form" model="ir.ui.view">
+      <field name="name">view.hotel.lead.form</field>
+      <field name="model">hotel.hotel_register</field>
+      <field name="arch"  type="xml">
+        <form string="Visita">
+          <sheet>
+            <group name="group_top">
+              <group name="group_left">
+                <field name="customer" />
+                <field name="date" />
+                <field name="type" />
+              </group>
+              <group name="group_right">
+                <field name="name" />
+                <field name="done" />
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+    <!-- vista arbol -->
+    <record id="view_hotel_lead_tree" model="ir.ui.view">
+      <field name="name">view.hotel.lead.tree</field>
+      <field name="model">hotel.hotel_register</field>
+      <field name="arch"  type="xml">
+        <tree string="Visitas">
+          <field name="customer"/>
+          <field name="name"/>
+          <field name="type"/>
+          <field name="date"/>
+        </tree>
+      </field>
+    </record>
+
+    <!-- redireccion para acciones -->
+    <record id="action_hotel_lead_view" model="ir.actions.act_window">
+      <field name="name">action.hotel.lead.view</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">hotel.hotel_register</field>
+      <field name="view_mode">tree,form</field>
+      <field name="help" type="html">
+        <p class="oe_view_nocontent_create">
+          Visitas
+        </p>
+        <p>
+          Click 'Nuevo' para añadir nuevas Visitas
+        </p>
+      </field>
+    </record>
+
+    <!-- menu -->
+    <menuitem
+      id="hotel_lead_menu_root"
+      name="Hotel"
+      sequence="10"/>
+    <menuitem
+      id="hotel_categoria_menu"
+      name="Operaciones"
+      parent="hotel_lead_menu_root"
+      sequence="0"/>
+    <menuitem
+      id="hotel_visita_menu"
+      name="Visitas"
+      parent="hotel_categoria_menu"
+      sequence="0"
+      action="action_hotel_lead_view"/>
+</odoo>
